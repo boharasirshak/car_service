@@ -17,7 +17,7 @@ export const Footer: React.FC<FooterProps> = ({
       <footer className={styles.footer}>
         <div className={styles.footer__container}>
           <section className={styles.footer__contacts}>
-            <h2 className={styles.footer__title}>CSA SERVICE</h2>
+            {/* <h2 className={styles.footer__title}>CSA SERVICE</h2> */}
             <div className={styles.footer__phones}>
               {phones.map(phone => {
                 return (
@@ -44,9 +44,13 @@ export const Footer: React.FC<FooterProps> = ({
               <Icon className={styles.footer__icon} icon='time' />
               {chart}
             </Link>
+            <Link className={styles.footer__wrap} href={`tel:${'Whats up'}`}>
+              <Icon className={styles.footer__icon} icon='whatsUp' />
+              Whats up
+            </Link>
           </section>
 
-          <section className={styles.footer__center}>
+          {/* <section className={styles.footer__center}>
             <h3 className={styles.footer__h3}>Прочее</h3>
             <Link href='/' className={styles.footer__wrap}>
               <Icon className={styles.footer__icon} icon='faq' width={24} />
@@ -68,15 +72,16 @@ export const Footer: React.FC<FooterProps> = ({
               <Icon className={styles.footer__icon} icon='pact' width={24} />
               Соглашение на обработку данных
             </Link>
-          </section>
+          </section> */}
 
-          <section className={styles.footer__right}>
+          {/* <section className={styles.footer__right}>
             <h3 className={styles.footer__h3}>Соцсети</h3>
             <div className={styles.footer__socials}>
               <Link className={styles.footer__wrap} href={`tel:${'Whats up'}`}>
                 <Icon className={styles.footer__icon} icon='whatsUp' />
+                Whats up
               </Link>
-              {/* <Link className={styles.footer__wrap} href={`tel:${'Whats up'}`}>
+              <Link className={styles.footer__wrap} href={`tel:${'Whats up'}`}>
                 <Icon className={styles.footer__icon} icon='telegramm' />
               </Link>
               <Link className={styles.footer__wrap} href={`/vk.com`}>
@@ -84,12 +89,12 @@ export const Footer: React.FC<FooterProps> = ({
               </Link>
               <Link className={styles.footer__wrap} href={`/instagramm.com`}>
                 <Icon className={styles.footer__icon} icon='instagramm' />
-              </Link> */}
+              </Link>
             </div>
-          </section>
+          </section> */}
         </div>
       </footer>
-      <div className={styles.underFooter}>© {new Date().getFullYear()}</div>
+      <div className={styles.underFooter}>&#169; {new Date().getFullYear()} CITY SERVICE AUTOMATIC</div>
     </>
   )
 }

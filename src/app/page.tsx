@@ -53,9 +53,9 @@ export default function Home() {
       {/* <Section title="Полезные статьи">
       {''}
       </Section> */}
-      <Section title='Контакты'>
+      {/* <Section title='Контакты'>
         <Contacts {...contacts} />
-      </Section>
+      </Section> */}
     </>
   )
 }

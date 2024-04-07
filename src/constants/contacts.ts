@@ -9,7 +9,8 @@ interface IContacts {
   title: string
   email: string
   address: string
-  chart: string
+  chart: string,
+  requisites: string[];
 }
 
 export const contacts: IContacts = {
@@ -19,5 +20,14 @@ export const contacts: IContacts = {
   coords: { lat: 45.025304, lon: 39.037081 },
   email: 'csa-servis@mail.ru',
   address: 'г.Краснодар ул. Селезнева 157',
-  chart: 'С понедельника по субботу с 10:00 до 19:00'
+  chart: 'С понедельника по субботу с 10:00 до 19:00',
+  requisites: [
+    'ИНН: 234205747116',
+    'Расчетный счет: 40802810700005962213',
+    'Банк: АО "ТИНЬКОФФ БАНК"',
+    'ИНН банка: 7710140679',
+    'БИК банка: 044525974',
+    'Корреспондентский счет банка: 30101810145250000974',
+    'Юридический адрес банка: Москва, 127287, ул. 2-я Хуторская, д. 38А, стр. 26'
+  ]
 }

@@ -20,7 +20,8 @@ export const Contacts: React.FC<ContactsProps> = ({
   coords,
   email,
   title,
-  phones
+  phones,
+  requisites
 }) => {
   const { lat, lon } = coords
   const [visible, setVisible] = useState<boolean>(false)
@@ -30,7 +31,7 @@ export const Contacts: React.FC<ContactsProps> = ({
   }
   return (
     <div className={styles.contacts}>
-      <YMaps>
+      {/* <YMaps>
         <div className={styles.contacts__map}>
           <Map
             width='100%'
@@ -44,7 +45,7 @@ export const Contacts: React.FC<ContactsProps> = ({
             <Placemark geometry={[lat, lon]} />
           </Map>
         </div>
-      </YMaps>
+      </YMaps> */}
       <div className={styles.contacts__container}>
         <h3 className={styles.contacts__title}>{title}</h3>
         <div
@@ -79,6 +80,16 @@ export const Contacts: React.FC<ContactsProps> = ({
         <div className={styles.contacts__wrap}>
           <Subtitle subtitle='График работы:' />
           {chart}
+        </div>
+        <div className={styles.contacts__wrap}>
+          <Subtitle subtitle='Реквизиты счета:' />
+          <ul>
+            {requisites.map((item, index) =>(
+              <li key={index}>
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
         <Button
           id='contacts-btn'

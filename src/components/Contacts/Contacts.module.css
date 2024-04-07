@@ -1,6 +1,6 @@
 .contacts {
   @apply relative;
-  @apply w-full min-h-[669px] md:min-h-[897px] xl:min-h-[584px];
+  @apply w-full min-h-[669px] md:min-h-[897px];
 }
 
 .contacts__map {
@@ -27,6 +27,10 @@
 
 .contacts__wrap {
   @apply font-medium text-lg lg:text-[22px]/[30px];
+}
+
+.contacts__wrap ul {
+  @apply flex flex-col gap-2;
 }
 
 .contacts__phones__wrap {

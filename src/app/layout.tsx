@@ -13,7 +13,7 @@ const raleWay = Raleway({
 })
 
 export const metadata: Metadata = {
-  title: 'Автосервис CITY SERVIS AUTOMATIC',
+  title: 'Автосервис CITY SERVICE AUTOMATIC',
   description: 'Ремонт и техническое обслуживание машин в Краснодаре'
 }
 
