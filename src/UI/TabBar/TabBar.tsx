@@ -5,7 +5,13 @@ import styles from './TabBar.module.css'
 import { useRef, useState } from 'react'
 import { useClickOutside } from '@/hooks'
 
-export function TabBar({ callback, className, classNameDropdown, list, sortType }: TabBarProps) {
+export function TabBar({
+  callback,
+  className,
+  classNameDropdown,
+  list,
+  sortType
+}: TabBarProps) {
   const [btnText, setBtntext] = useState('Все')
   const [isVisible, setIsVisible] = useState(false)
 
@@ -22,7 +28,7 @@ export function TabBar({ callback, className, classNameDropdown, list, sortType 
   return (
     <>
       <ul className={cn(styles.ul, className)}>
-        {list.map((el) => {
+        {list.map(el => {
           return (
             <li key={el.title}>
               <button
@@ -39,26 +45,19 @@ export function TabBar({ callback, className, classNameDropdown, list, sortType 
         })}
       </ul>
       <div ref={dropdownRef} className={cn(styles.dropdown, classNameDropdown)}>
-
-        <button
-          className={styles.dropdownBtn}
-          onClick={handlerDropdown}
-        >
+        <button className={styles.dropdownBtn} onClick={handlerDropdown}>
           Фильтровать по &quot;{btnText}&quot;
         </button>
-        {isVisible &&
-          <ul
-            className={cn(styles.ulCol, className)}
-          >
-            {list.map((el) => {
+        {isVisible && (
+          <ul className={cn(styles.ulCol, className)}>
+            {list.map(el => {
               return (
                 <li key={el.title}>
-                  {
-                    sortType !== el.type &&
+                  {sortType !== el.type && (
                     <button
                       className={cn(styles.btn, styles.dropdownBtn)}
                       data-type={el.type}
-                      onClick={(e) => {
+                      onClick={e => {
                         callback(e)
                         setBtntext(el.title)
                         setIsVisible(false)
@@ -66,14 +65,12 @@ export function TabBar({ callback, className, classNameDropdown, list, sortType 
                     >
                       {el.title}
                     </button>
-                  }
-
+                  )}
                 </li>
               )
-            })
-            }
+            })}
           </ul>
-        }
+        )}
       </div>
     </>
   )

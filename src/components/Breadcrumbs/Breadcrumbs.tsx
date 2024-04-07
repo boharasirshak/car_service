@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { detailsServices, pathData } from '@/constants'
 
 import styles from './Breadcrumbs.module.css'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 
 const navAnimation = {
   hidden: {
@@ -33,7 +33,7 @@ const linkAnimation = {
 
 export function Breadcrumbs() {
   const pathname = usePathname()
-  const detailsServicesPaths = detailsServices.map(({id, title})=> {
+  const detailsServicesPaths = detailsServices.map(({ id, title }) => {
     return {
       title,
       path: `/${id}`
@@ -42,9 +42,9 @@ export function Breadcrumbs() {
   const paths = [...pathData, ...detailsServicesPaths]
   const pathnameSplit = pathname.split('/').slice(1)
 
-  useEffect(()=> {
-    console.log(paths)
-  })
+  // useEffect(()=> {
+  //   console.log(paths)
+  // })
   return (
     <motion.ul
       className={styles.nav}
@@ -54,12 +54,11 @@ export function Breadcrumbs() {
       viewport={{ once: true }}
     >
       <li>
-        <Link
-          className={styles.link}
-          href={'/'}>Главная
+        <Link className={styles.link} href={'/'}>
+          Главная
         </Link>
       </li>
-      {pathnameSplit.map((item) => {
+      {pathnameSplit.map(item => {
         const resObj = paths.find(el => el.path === `/${item}`)
         if (!resObj || item.length === 0) return null
         const { title, path } = resObj
@@ -70,9 +69,7 @@ export function Breadcrumbs() {
               whileInView={linkAnimation.visible}
               exit={linkAnimation.hidden}
             >
-              <Link
-                className={styles.link}
-                href={path}>
+              <Link className={styles.link} href={path}>
                 ▸ {title}
               </Link>
             </motion.li>

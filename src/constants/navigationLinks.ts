@@ -1,5 +1,1 @@
-export const navigationLinks: string[] = [
-  'О нас',
-  'Покупателям',
-  'Контакты'
-]
+export const navigationLinks: string[] = ['О нас', 'Покупателям', 'Контакты']

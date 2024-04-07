@@ -1,4 +1,4 @@
-import { IconType } from "@/components/icon/icon.props"
+import { IconType } from '@/components/icon/icon.props'
 
 interface IArvantages {
   icon: IconType

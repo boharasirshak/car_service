@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion'
 
 import { Button } from '@/UI'
 
@@ -31,9 +31,9 @@ const textAnimation = {
 export function Hero({ buttonContent, description, title }: HeroProps) {
   const handlerBtn = () => {
     if (typeof window !== 'undefined') {
-      const el = document.getElementById('contacts-btn');
+      const el = document.getElementById('contacts-btn')
       if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
+        el.scrollIntoView({ behavior: 'smooth' })
         setTimeout(() => {
           el.focus()
           console.log(document.activeElement)
@@ -54,24 +54,20 @@ export function Hero({ buttonContent, description, title }: HeroProps) {
         >
           {title}
         </motion.h1>
-        {description && <motion.p
-          className={cn(styles.hero__description, inter.className)}
-          initial={textAnimation.hidden}
-          whileInView={textAnimation.visible}
-          exit={textAnimation.hidden}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          {description}
-          </motion.p>}
-        <div
-          className={styles.hero__btn_wrap}
-        >
-
-          <Button
-            onClick={handlerBtn}
-            className={styles.hero__btn}
+        {description && (
+          <motion.p
+            className={cn(styles.hero__description, inter.className)}
+            initial={textAnimation.hidden}
+            whileInView={textAnimation.visible}
+            exit={textAnimation.hidden}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
           >
+            {description}
+          </motion.p>
+        )}
+        <div className={styles.hero__btn_wrap}>
+          <Button onClick={handlerBtn} className={styles.hero__btn}>
             {buttonContent}
           </Button>
         </div>

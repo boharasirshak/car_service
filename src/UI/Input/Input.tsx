@@ -5,6 +5,6 @@ import styles from './Input.module.css'
 
 export function Input({ className, ...props }: InputProps) {
   return (
-    <input className={cn(styles.input, className)} type="text" {...props} />
+    <input className={cn(styles.input, className)} type='text' {...props} />
   )
 }

@@ -1,16 +1,16 @@
 'use client'
 
-import Link from "next/link";
-import { ServicesItemProps } from "../ServicesList.props";
-import Image from "next/image";
+import Link from 'next/link'
+import { ServicesItemProps } from '../ServicesList.props'
+import Image from 'next/image'
 
 import { AnimatePresence, motion } from 'framer-motion'
 
-import cn from "classnames";
+import cn from 'classnames'
 import styles from './ServicesItem.module.css'
 
-import { Lato, Raleway } from "next/font/google";
-import { useState } from "react";
+import { Lato, Raleway } from 'next/font/google'
+import { useState } from 'react'
 
 const lato = Lato({
   subsets: ['latin'],
@@ -54,16 +54,26 @@ const ulAnimation = {
   }
 }
 
-
-export function ServicesItem({ className, title, img, links }: ServicesItemProps) {
+export function ServicesItem({
+  className,
+  title,
+  img,
+  links
+}: ServicesItemProps) {
   const [isOpen, setOpen] = useState<boolean>(false)
   return (
     <motion.div
       tabIndex={0}
       className={cn(styles.service, className)}
-      onClick={() => { setOpen(true) }}
-      onFocus={() => { setOpen(true) }}
-      onBlur={() => { setOpen(false) }}
+      onClick={() => {
+        setOpen(true)
+      }}
+      onFocus={() => {
+        setOpen(true)
+      }}
+      onBlur={() => {
+        setOpen(false)
+      }}
       initial={wrapAnimation.hidden}
       whileInView={wrapAnimation.visible}
       transition={{ duration: 0.5 }}
@@ -78,8 +88,7 @@ export function ServicesItem({ className, title, img, links }: ServicesItemProps
       />
 
       <AnimatePresence>
-        {!isOpen
-          &&
+        {!isOpen && (
           <motion.h3
             className={cn(styles.h3, raleWay.className)}
             initial={textAnimation.hidden}
@@ -89,12 +98,11 @@ export function ServicesItem({ className, title, img, links }: ServicesItemProps
           >
             {title}
           </motion.h3>
-        }
+        )}
       </AnimatePresence>
 
       <AnimatePresence>
-        {isOpen
-          &&
+        {isOpen && (
           <motion.ul
             className={cn(styles.ul, raleWay.className)}
             initial={ulAnimation.hidden}
@@ -110,7 +118,6 @@ export function ServicesItem({ className, title, img, links }: ServicesItemProps
                   exit={textAnimation.hidden}
                   transition={{ duration: 0.2 + index / 10 }}
                 >
-
                   <Link className={styles.link} href={'/services/' + id}>
                     {title}
                   </Link>
@@ -118,7 +125,7 @@ export function ServicesItem({ className, title, img, links }: ServicesItemProps
               )
             })}
           </motion.ul>
-        }
+        )}
       </AnimatePresence>
     </motion.div>
   )

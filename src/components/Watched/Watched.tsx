@@ -2,15 +2,15 @@
 
 import { motion } from 'framer-motion'
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules'
 
-import { useAppSelector } from "@/hooks"
-import { Section } from ".."
-import Image from 'next/image';
+import { useAppSelector } from '@/hooks'
+import { Section } from '..'
+import Image from 'next/image'
 
 import styles from './Watched.module.css'
-import Link from 'next/link';
+import Link from 'next/link'
 
 const textAnimation = {
   hidden: {
@@ -27,8 +27,8 @@ export function Watched() {
   const { watched } = useAppSelector(state => state.watched)
   return (
     <>
-      {!!watched.length &&
-        <Section title="Вы смотрели">
+      {!!watched.length && (
+        <Section title='Вы смотрели'>
           <motion.div
             className={styles.container}
             initial={textAnimation.hidden}
@@ -43,7 +43,7 @@ export function Watched() {
               navigation
               pagination={{ clickable: true }}
               scrollbar={{ draggable: true }}
-              effect={"slide"}
+              effect={'slide'}
               loop={true}
               breakpoints={{
                 320: {
@@ -60,43 +60,36 @@ export function Watched() {
                 }
               }}
             >
-              {
-                watched.map(({ title, id, img }) => {
-                  return (
-                    <SwiperSlide key={id}>
-                      <Link
-                        className={styles.link}
-                        href={`/services/${id}`}
+              {watched.map(({ title, id, img }) => {
+                return (
+                  <SwiperSlide key={id}>
+                    <Link className={styles.link} href={`/services/${id}`}>
+                      <Image
+                        className={styles.img}
+                        src={img}
+                        alt={title}
+                        width={500}
+                        height={300}
+                        objectFit='cover'
+                      />
+                      <motion.h3
+                        className={styles.h3}
+                        initial={textAnimation.hidden}
+                        whileInView={textAnimation.visible}
+                        exit={textAnimation.hidden}
+                        transition={{ duration: 0.3, delay: 0.3 }}
+                        viewport={{ once: true }}
                       >
-                        <Image
-                          className={styles.img}
-                          src={img}
-                          alt={title}
-                          width={500}
-                          height={300}
-                          objectFit='cover'
-                        />
-                        <motion.h3
-                          className={styles.h3}
-                          initial={textAnimation.hidden}
-                          whileInView={textAnimation.visible}
-                          exit={textAnimation.hidden}
-                          transition={{ duration: 0.3, delay: 0.3 }}
-                          viewport={{ once: true }}
-                        >
-                          {title}
-                        </motion.h3>
-                      </Link>
-                    </SwiperSlide>
-                  )
-                })
-              }
-
+                        {title}
+                      </motion.h3>
+                    </Link>
+                  </SwiperSlide>
+                )
+              })}
             </Swiper>
           </motion.div>
-
         </Section>
-      }
+      )}
     </>
   )
 }

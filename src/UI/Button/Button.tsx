@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion'
 
 import cn from 'classnames'
 
@@ -19,12 +19,7 @@ const textAnimation = {
   }
 }
 
-
-export function Button({
-  children,
-  className,
-  ...props
-}: ButtonProps) {
+export function Button({ children, className, ...props }: ButtonProps) {
   return (
     <motion.div
       initial={textAnimation.hidden}
@@ -33,10 +28,7 @@ export function Button({
       transition={{ duration: 0.3, delay: 0.3 }}
       viewport={{ once: true }}
     >
-      <button
-        className={cn(styles.button, className)}
-        {...props}
-      >
+      <button className={cn(styles.button, className)} {...props}>
         {children}
       </button>
     </motion.div>

@@ -1,4 +1,4 @@
-import { Breadcrumbs, Footer, Header } from '@/components'
+import { Breadcrumbs, Header, Footer } from '@/components'
 import type { Metadata } from 'next'
 import { Raleway } from 'next/font/google'
 
@@ -12,29 +12,32 @@ const raleWay = Raleway({
   display: 'swap'
 })
 
-
 export const metadata: Metadata = {
   title: 'Автосервис CITY SERVIS AUTOMATIC',
-  description: 'Ремонт и техническое обслуживание машин в Краснодаре',
+  description: 'Ремонт и техническое обслуживание машин в Краснодаре'
 }
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode
 }) {
-  const services = servicesTitles.map((el) => el.title)
+  const services = servicesTitles.map(el => el.title)
   return (
     <ReduxToolkitProvider>
-      <html lang="ru">
+      <html lang='ru'>
         <body className={`relative ${raleWay.className}`}>
-          <div id='portal'></div>
+          {/* <div id='portal'></div> */}
           <Header />
           <main className={styles.container}>
             <Breadcrumbs />
             {children}
           </main>
-          <Footer contacts={contacts} navigation={navigationLinks} services={services} />
+          <Footer
+            contacts={contacts}
+            navigation={navigationLinks}
+            services={services}
+          />
         </body>
       </html>
     </ReduxToolkitProvider>

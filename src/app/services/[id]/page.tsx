@@ -1,18 +1,18 @@
 'use client'
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
+import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion'
 
-import { detailsServices } from "@/constants";
+import { detailsServices } from '@/constants'
 
 import cn from 'classnames'
 
 import styles from './DetailServicesPage.module.css'
-import Link from 'next/link';
-import { useAppDispatch, useAppSelector } from '@/hooks';
-import { Button } from '@/UI';
-import { addCervice, addWatchedCervice, deleteService } from '@/store/features';
+import Link from 'next/link'
+import { useAppDispatch, useAppSelector } from '@/hooks'
+import { Button } from '@/UI'
+import { addCervice, addWatchedCervice, deleteService } from '@/store/features'
 
 const textAnimation = {
   hidden: {
@@ -24,23 +24,30 @@ const textAnimation = {
     opacity: 1
   },
   hiddenScale: {
-    scale: 0,
+    scale: 0
     // opacity: 0
   },
   visibleScale: {
-    scale: 1,
+    scale: 1
     // opacity: 1
   }
 }
 
-
-export default function DetailServicePage({ params }: { params: { id: string } }) {
-  const detailService = detailsServices.find(service => service.id === params.id)
+export default function DetailServicePage({
+  params
+}: {
+  params: { id: string }
+}) {
+  const detailService = detailsServices.find(
+    service => service.id === params.id
+  )
 
   const dispatch = useAppDispatch()
   const { cart } = useAppSelector(state => state.cart)
   const isInCart = cart.find(service => service.id === detailService?.id)
-  const [btnText, setBtnText] = useState<'Добавить услугу' | 'Убрать услугу'>(isInCart ? 'Убрать услугу' : 'Добавить услугу')
+  const [btnText, setBtnText] = useState<'Добавить услугу' | 'Убрать услугу'>(
+    isInCart ? 'Убрать услугу' : 'Добавить услугу'
+  )
 
   const handlerbtn = () => {
     if (detailService) {
@@ -62,11 +69,8 @@ export default function DetailServicePage({ params }: { params: { id: string } }
     }
   }, [])
 
-
   if (!detailService) {
-    return (
-      <p>Страница не найдена</p>
-    )
+    return <p>Страница не найдена</p>
   }
 
   const { title, img, description } = detailService
@@ -79,7 +83,9 @@ export default function DetailServicePage({ params }: { params: { id: string } }
         whileInView={textAnimation.visibleScale}
         exit={textAnimation.hiddenScale}
         transition={{ duration: 0.3 }}
-      >{title}</motion.h1>
+      >
+        {title}
+      </motion.h1>
       <div className={styles.content}>
         <motion.div
           className={styles.wrap}
@@ -110,7 +116,9 @@ export default function DetailServicePage({ params }: { params: { id: string } }
         <Button
           className={cn(styles.link, styles.link__subscribe)}
           onClick={handlerbtn}
-        >{btnText}</Button>
+        >
+          {btnText}
+        </Button>
         <motion.div
           className={cn(styles.link)}
           initial={textAnimation.hidden}
@@ -120,7 +128,8 @@ export default function DetailServicePage({ params }: { params: { id: string } }
         >
           <Link
             // className={cn(styles.link)}
-            href={'/services'}>
+            href={'/services'}
+          >
             Посмотреть другие услуги
           </Link>
         </motion.div>

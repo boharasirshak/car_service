@@ -1,31 +1,31 @@
 interface IPathData {
-  path: string;
-  title: string;
+  path: string
+  title: string
 }
 
 export const pathData: IPathData[] = [
   {
     path: '/',
-    title: 'Главная',
+    title: 'Главная'
   },
   {
     path: '/about',
-    title: 'О нас',
+    title: 'О нас'
   },
   {
     path: '/services',
-    title: 'Услуги',
+    title: 'Услуги'
   },
   {
     path: '/galery',
-    title: 'Галерея',
+    title: 'Галерея'
   },
   {
     path: '/contacts',
-    title: 'Контакты',
+    title: 'Контакты'
   },
   {
     path: '/cart',
-    title: 'Корзина',
-  },
-];
+    title: 'Корзина'
+  }
+]

@@ -1,7 +1,6 @@
 import { writeFile } from 'fs/promises'
 import { join, resolve } from 'path'
 
-
 export default function ServerUploadPage() {
   async function upload(data: FormData) {
     'use server'
@@ -26,8 +25,8 @@ export default function ServerUploadPage() {
     <main>
       <h1>Загрузка тест</h1>
       <form action={upload}>
-        <input type="file" name="file" />
-        <input type="submit" value="Upload" />
+        <input type='file' name='file' />
+        <input type='submit' value='Upload' />
       </form>
     </main>
   )

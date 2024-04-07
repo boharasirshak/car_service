@@ -1,4 +1,4 @@
-import { SVGProps } from 'react';
+import { SVGProps } from 'react'
 
 export type IconType =
   | 'account'
@@ -22,8 +22,8 @@ export type IconType =
   | 'time'
   | 'vk'
   | 'whatsUp'
-  | 'telegramm';
+  | 'telegramm'
 
 export interface IconProps extends SVGProps<SVGSVGElement> {
-  icon: IconType;
+  icon: IconType
 }

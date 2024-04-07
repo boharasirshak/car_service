@@ -1,5 +1,3 @@
-'use client'
-
 import { createSlice } from '@reduxjs/toolkit'
 
 export interface ServicesLinkProps {
@@ -13,30 +11,32 @@ interface ICart {
 }
 
 const keyLS = 'cart'
-
-const cartLS = localStorage?.getItem(keyLS)
+let cartLS
+try {
+  cartLS = localStorage.getItem(keyLS)
+} catch (e) {}
 
 const initialState: ICart = {
-  cart: cartLS ? JSON.parse(cartLS) : [],
+  cart: cartLS ? JSON.parse(cartLS) : []
 }
 
 export const counterSlice = createSlice({
   name: '@cart',
   initialState,
   reducers: {
-    addCervice: (state, action: {payload: ServicesLinkProps}) => {
+    addCervice: (state, action: { payload: ServicesLinkProps }) => {
       state.cart.push(action.payload)
       localStorage.setItem(keyLS, JSON.stringify(state.cart))
     },
-    deleteService: (state, action: {payload: string}) => {
+    deleteService: (state, action: { payload: string }) => {
       state.cart = state.cart.filter(service => service.id !== action.payload)
       localStorage.setItem(keyLS, JSON.stringify(state.cart))
     },
-    resetCart: (state) => {
+    resetCart: state => {
       state.cart = []
       localStorage.setItem(keyLS, JSON.stringify(state.cart))
-    },
-  },
+    }
+  }
 })
 
 export const { addCervice, deleteService, resetCart } = counterSlice.actions

@@ -7,7 +7,7 @@ import nodemailer from 'nodemailer'
 export async function POST(request: NextApiRequest) {
   console.log(request.body)
   try {
-    const { subject, message } = request.body;
+    const { subject, message } = request.body
 
     const transporter = nodemailer.createTransport(
       {

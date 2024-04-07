@@ -1,15 +1,14 @@
 'use client'
 
-import { useScroll } from "@/hooks";
-import { Icon } from "@/components";
+import { useScroll } from '@/hooks'
+import { Icon } from '@/components'
 
-import { ScrollBtnProps } from "./ScrollBtn.props";
+import { ScrollBtnProps } from './ScrollBtn.props'
 
-import cn from "classnames";
+import cn from 'classnames'
 import styles from './ScrollBtn.module.css'
 
 export function ScrollBtn(props: ScrollBtnProps) {
-
   const { scrollY } = useScroll()
 
   function scrollToUp() {
@@ -17,19 +16,20 @@ export function ScrollBtn(props: ScrollBtnProps) {
       window.scrollTo({
         top: 0,
         left: 0,
-        behavior: 'smooth',
-      });
+        behavior: 'smooth'
+      })
     }
   }
 
   return (
     <button
-      className={cn(styles.btn,
-        {
-          [styles.shown]: scrollY > 500
-        })}
-      onClick={scrollToUp} {...props}>
-      <Icon icon="arrowUp" />
+      className={cn(styles.btn, {
+        [styles.shown]: scrollY > 500
+      })}
+      onClick={scrollToUp}
+      {...props}
+    >
+      <Icon icon='arrowUp' />
     </button>
   )
 }

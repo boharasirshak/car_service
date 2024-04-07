@@ -1,12 +1,12 @@
 'use client'
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 import cn from 'classnames'
 import styles from './BurgerMenu.module.css'
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { Icon } from ".."
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { Icon } from '..'
 
 const burgerAnimation = {
   hidden: {
@@ -43,52 +43,44 @@ export function BurgerMenu() {
   const pathname = usePathname()
   const [isVisible, setVisible] = useState<boolean>(false)
 
-
-
   useEffect(() => {
     const body = document.querySelector('body')
     if (body) {
-      body.setAttribute('style', `${isVisible && "overflow: hidden"}`)
+      body.setAttribute('style', `${isVisible && 'overflow: hidden'}`)
     }
-  }, [isVisible]);
+  }, [isVisible])
 
   return (
     <>
       <button
         aria-label='Кнопка открытия выдвижного меню'
-        className={cn(
-          styles.btn,
-          {
-            [styles.open]: isVisible
-          }
-        )}
+        className={cn(styles.btn, {
+          [styles.open]: isVisible
+        })}
         onClick={() => {
           setVisible(!isVisible)
         }}
       >
-        <span className={cn(
-          styles.line,
-          styles.top,
-          {
+        <span
+          className={cn(styles.line, styles.top, {
             [styles.open]: isVisible
-          })}></span>
-        <span className={cn(
-          styles.line,
-          styles.center,
-          {
+          })}
+        ></span>
+        <span
+          className={cn(styles.line, styles.center, {
             [styles.open]: isVisible
-          })}></span>
-        <span className={cn(
-          styles.line,
-          styles.bottom,
-          {
+          })}
+        ></span>
+        <span
+          className={cn(styles.line, styles.bottom, {
             [styles.open]: isVisible
-          })}></span>
-      </button >
+          })}
+        ></span>
+      </button>
       <AnimatePresence>
-        {isVisible &&
+        {isVisible && (
           <motion.div
-            style={{ overflowY: "auto" }}
+            style={{ overflowY: 'auto' }}
             className={styles.container}
             initial={burgerAnimation.hidden}
             whileInView={burgerAnimation.visible}
@@ -102,11 +94,46 @@ export function BurgerMenu() {
               exit={navAnimation.hidden}
               transition={{ duration: 0.3, delay: 0.3 }}
             >
-              <Link className={cn(styles.link, { [styles.active]: pathname === '/' })} href='/'>Главная</Link>
-              <Link className={cn(styles.link, { [styles.active]: pathname === '/about' })} href='/about'>О нас</Link>
-              <Link className={cn(styles.link, { [styles.active]: pathname === '/services' })} href='/services'>Услуги</Link>
-              <Link className={cn(styles.link, { [styles.active]: pathname === '/galery' })} href='/galery'>Галерея</Link>
-              <Link className={cn(styles.link, { [styles.active]: pathname === '/contacts' })} href='/contacts'>Контакты</Link>
+              <Link
+                className={cn(styles.link, {
+                  [styles.active]: pathname === '/'
+                })}
+                href='/'
+              >
+                Главная
+              </Link>
+              <Link
+                className={cn(styles.link, {
+                  [styles.active]: pathname === '/about'
+                })}
+                href='/about'
+              >
+                О нас
+              </Link>
+              <Link
+                className={cn(styles.link, {
+                  [styles.active]: pathname === '/services'
+                })}
+                href='/services'
+              >
+                Услуги
+              </Link>
+              <Link
+                className={cn(styles.link, {
+                  [styles.active]: pathname === '/galery'
+                })}
+                href='/galery'
+              >
+                Галерея
+              </Link>
+              <Link
+                className={cn(styles.link, {
+                  [styles.active]: pathname === '/contacts'
+                })}
+                href='/contacts'
+              >
+                Контакты
+              </Link>
             </motion.nav>
 
             <ul className={styles.burger__socials}>
@@ -116,7 +143,10 @@ export function BurgerMenu() {
                 // exit={socialsAnimation.hidden}
                 transition={{ duration: 0.3, delay: 0.3 }}
               >
-                <Link className={styles.burger__wrap} href={`tel:${'Whats up'}`}>
+                <Link
+                  className={styles.burger__wrap}
+                  href={`tel:${'Whats up'}`}
+                >
                   <Icon className={styles.burger__icon} icon='whatsUp' />
                 </Link>
               </motion.li>
@@ -126,7 +156,10 @@ export function BurgerMenu() {
                 // exit={socialsAnimation.hidden}
                 transition={{ duration: 0.3, delay: 0.5 }}
               >
-                <Link className={styles.burger__wrap} href={`tel:${'Whats up'}`}>
+                <Link
+                  className={styles.burger__wrap}
+                  href={`tel:${'Whats up'}`}
+                >
                   <Icon className={styles.burger__icon} icon='telegramm' />
                 </Link>
               </motion.li>
@@ -164,7 +197,11 @@ export function BurgerMenu() {
                 Часто задаваемые воросы
               </Link>
               <Link href='/' className={styles.burger__wrap}>
-                <Icon className={styles.footer__icon} icon='confidence' width={24} />
+                <Icon
+                  className={styles.footer__icon}
+                  icon='confidence'
+                  width={24}
+                />
                 Политика конфиденциальности
               </Link>
               <Link href='/' className={styles.burger__wrap}>
@@ -176,8 +213,8 @@ export function BurgerMenu() {
                 Соглашение на обработку данных
               </Link>
             </motion.nav>
-
-          </motion.div>}
+          </motion.div>
+        )}
       </AnimatePresence>
     </>
   )

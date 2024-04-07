@@ -1,11 +1,11 @@
 'use client'
-import { ChangeEvent, MouseEvent, SyntheticEvent, useState } from "react";
+import { ChangeEvent, MouseEvent, SyntheticEvent, useState } from 'react'
 
-import { Input, TabBar } from "@/UI";
-import { Section, ServicesLinkList } from "@/components";
-import { servicesTitles, detailsServices } from "@/constants";
+import { Input, TabBar } from '@/UI'
+import { Section, ServicesLinkList } from '@/components'
+import { servicesTitles, detailsServices } from '@/constants'
 
-import cn from 'classnames'
+// import cn from 'classnames'
 import styles from './services.module.css'
 
 export default function Services() {
@@ -32,16 +32,14 @@ export default function Services() {
     setSortType(undefined)
   }
 
-  const filterTabs = [...detailsServices]
-    .filter(el => {
-      if (!sortType) return el
-      return el.type === sortType
-    })
+  const filterTabs = [...detailsServices].filter(el => {
+    if (!sortType) return el
+    return el.type === sortType
+  })
 
-  const filterSearch = [...detailsServices]
-    .filter(el => el.title
-      .toLocaleLowerCase()
-      .includes(search.toLocaleLowerCase()))
+  const filterSearch = [...detailsServices].filter(el =>
+    el.title.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+  )
 
   const all = {
     title: 'Все',
@@ -49,38 +47,31 @@ export default function Services() {
   }
 
   return (
-    <Section title="Услуги">
+    <Section title='Услуги'>
       <div className={styles.header}>
         <Input
           onChange={handleSearch}
           // onBlur={handleBlur}
           placeholder={'Я ищу...'}
-          type="search"
-          value={search} />
+          type='search'
+          value={search}
+        />
         <TabBar
           className={styles.tabbar}
           classNameDropdown={styles.dropdown}
           list={[...servicesTitles, all]}
           callback={handleTab}
-          sortType={sortType} />
-      </div>
-      {search!?.length === 0 &&
-        <ServicesLinkList
-          className={styles.ul}
-          list={filterTabs} />}
-      {
-        search &&
-        <ServicesLinkList
-          list={filterSearch}
+          sortType={sortType}
         />
-      }
+      </div>
+      {search!?.length === 0 && (
+        <ServicesLinkList className={styles.ul} list={filterTabs} />
+      )}
+      {search && <ServicesLinkList list={filterSearch} />}
 
-      {
-        filterSearch.length === 0 &&
-        <p className={styles.message}>
-          По вашему запросу ничего не найдено
-        </p>
-      }
+      {filterSearch.length === 0 && (
+        <p className={styles.message}>По вашему запросу ничего не найдено</p>
+      )}
     </Section>
   )
 }

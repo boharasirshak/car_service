@@ -1,18 +1,27 @@
-import { Advantages, Article, Contacts, Galery, Hero, Section, ServicesList, Watched } from "@/components";
+import {
+  Advantages,
+  Article,
+  Contacts,
+  Galery,
+  Hero,
+  Section,
+  ServicesList,
+  Watched
+} from '@/components'
 
-import { advantages, contacts, galeryData, servicesTitles } from "@/constants";
+import { advantages, contacts, galeryData, servicesTitles } from '@/constants'
 
 // import styles from './layout.module.css'
 
 export default function Home() {
-  console.log(process.env.pass)
+  // console.log(process.env.pass)
   return (
     <>
       <Hero
-        title={'CITY SERVIS AUTOMATIC'}
-        description="Безопасность и надежность работы автомобиля"
+        title={'CITY SERVICE AUTOMATIC'}
+        description='Безопасность и надежность работы автомобиля'
         buttonContent={'Консультация'}
-      // background={'url(/car-hero-1920.jpg)'}
+        // background={'url(/car-hero-1920.jpg)'}
       />
       <Section title={'О нас'}>
         <Article
@@ -34,18 +43,18 @@ export default function Home() {
       <Section title={'Наши услуги'}>
         <ServicesList list={servicesTitles} />
       </Section>
-      <Watched/>
-      <Section title="Фотогалерея">
-        <Galery list={galeryData} isLink/>
+      <Watched />
+      <Section title='Фотогалерея'>
+        <Galery list={galeryData} isLink />
       </Section>
-      <Section title="Наши преимущества">
-      <Advantages list={advantages}/>
+      <Section title='Наши преимущества'>
+        <Advantages list={advantages} />
       </Section>
-      <Section title="Полезные статьи">
+      {/* <Section title="Полезные статьи">
       {''}
-      </Section>
-      <Section title="Контакты">
-        <Contacts {...contacts}/>
+      </Section> */}
+      <Section title='Контакты'>
+        <Contacts {...contacts} />
       </Section>
     </>
   )

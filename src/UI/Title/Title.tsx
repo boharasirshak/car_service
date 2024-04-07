@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 
-import { TitleProps } from "./Title.props";
+import { TitleProps } from './Title.props'
 
 import styles from './Title.module.css'
 

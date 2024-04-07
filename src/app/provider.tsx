@@ -3,7 +3,7 @@ import store from '@/store'
 import { Provider } from 'react-redux'
 
 export function ReduxToolkitProvider({
-  children,
+  children
 }: {
   children: React.ReactNode
 }) {

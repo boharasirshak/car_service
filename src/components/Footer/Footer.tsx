@@ -6,16 +6,20 @@ import { FooterProps } from './Footer.props'
 
 import styles from './Footer.module.css'
 
-export function Footer({ contacts, navigation, services }: FooterProps) {
+export const Footer: React.FC<FooterProps> = ({
+  contacts,
+  navigation,
+  services
+}) => {
   const { address, chart, email, phones } = contacts
   return (
     <>
       <footer className={styles.footer}>
         <div className={styles.footer__container}>
           <section className={styles.footer__contacts}>
-            <h2 className={styles.footer__title}>CSA SERVIS</h2>
+            <h2 className={styles.footer__title}>CSA SERVICE</h2>
             <div className={styles.footer__phones}>
-              {phones.map((phone) => {
+              {phones.map(phone => {
                 return (
                   <Link
                     className={styles.footer__wrap}
@@ -49,7 +53,11 @@ export function Footer({ contacts, navigation, services }: FooterProps) {
               Часто задаваемые воросы
             </Link>
             <Link href='/' className={styles.footer__wrap}>
-              <Icon className={styles.footer__icon} icon='confidence' width={24} />
+              <Icon
+                className={styles.footer__icon}
+                icon='confidence'
+                width={24}
+              />
               Политика конфиденциальности
             </Link>
             <Link href='/' className={styles.footer__wrap}>
@@ -68,7 +76,7 @@ export function Footer({ contacts, navigation, services }: FooterProps) {
               <Link className={styles.footer__wrap} href={`tel:${'Whats up'}`}>
                 <Icon className={styles.footer__icon} icon='whatsUp' />
               </Link>
-              <Link className={styles.footer__wrap} href={`tel:${'Whats up'}`}>
+              {/* <Link className={styles.footer__wrap} href={`tel:${'Whats up'}`}>
                 <Icon className={styles.footer__icon} icon='telegramm' />
               </Link>
               <Link className={styles.footer__wrap} href={`/vk.com`}>
@@ -76,15 +84,12 @@ export function Footer({ contacts, navigation, services }: FooterProps) {
               </Link>
               <Link className={styles.footer__wrap} href={`/instagramm.com`}>
                 <Icon className={styles.footer__icon} icon='instagramm' />
-              </Link>
+              </Link> */}
             </div>
           </section>
-
         </div>
       </footer>
-      <div className={styles.underFooter}>
-      © { new Date().getFullYear()}
-      </div>
+      <div className={styles.underFooter}>© {new Date().getFullYear()}</div>
     </>
   )
 }

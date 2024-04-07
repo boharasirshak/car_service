@@ -4,7 +4,7 @@ import { AboutSectionProps } from './Article.props'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion'
 
 import cn from 'classnames'
 import styles from './Article.module.css'
@@ -20,8 +20,14 @@ const textAnimation = {
   }
 }
 
-
-export function Article({ className, quote, description, href, src, isReverse = false }: AboutSectionProps) {
+export const Article: React.FC<AboutSectionProps> = ({
+  className,
+  quote,
+  description,
+  href,
+  src,
+  isReverse = false
+}) => {
   return (
     <div className={cn(styles.about, className)}>
       <div className={styles.about__left}>
@@ -32,8 +38,9 @@ export function Article({ className, quote, description, href, src, isReverse = 
           src={src}
           alt={quote ? quote : 'Здесь могла бы быть наша фотография'}
           width={880}
-          height={360} />
-        {quote &&
+          height={360}
+        />
+        {quote && (
           <motion.blockquote
             className={styles.about__quote}
             initial={textAnimation.hidden}
@@ -43,7 +50,8 @@ export function Article({ className, quote, description, href, src, isReverse = 
             viewport={{ once: true }}
           >
             {quote}
-          </motion.blockquote>}
+          </motion.blockquote>
+        )}
         <motion.p
           className={styles.about__description}
           initial={textAnimation.hidden}
@@ -54,7 +62,15 @@ export function Article({ className, quote, description, href, src, isReverse = 
         >
           {description}
         </motion.p>
-        {href && <Link aria-label='Переход в раздел О нас' className={styles.about__link} href={href}>Подробнее...</Link>}
+        {href && (
+          <Link
+            aria-label='Переход в раздел О нас'
+            className={styles.about__link}
+            href={href}
+          >
+            Подробнее...
+          </Link>
+        )}
       </div>
     </div>
   )

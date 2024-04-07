@@ -28,11 +28,11 @@ export function UploadForm() {
   return (
     <form onSubmit={onSubmit}>
       <input
-        type="file"
-        name="file"
-        onChange={(e) => setFile(e.target.files?.[0])}
+        type='file'
+        name='file'
+        onChange={e => setFile(e.target.files?.[0])}
       />
-      <input type="submit" value="Upload" />
+      <input type='submit' value='Upload' />
     </form>
   )
 }

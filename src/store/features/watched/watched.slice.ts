@@ -1,5 +1,3 @@
-'use client'
-
 import { createSlice } from '@reduxjs/toolkit'
 
 export interface ServicesWatchedLinkProps {
@@ -14,7 +12,10 @@ interface ICart {
 
 const keyLS = 'watched'
 
-const watchedLS = localStorage?.getItem(keyLS)
+let watchedLS
+try {
+  watchedLS = localStorage.getItem(keyLS)
+} catch (e) {}
 
 const initialState: ICart = {
   watched: watchedLS ? JSON.parse(watchedLS) : []

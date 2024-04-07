@@ -1,18 +1,18 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules'
 import { motion, AnimatePresence } from 'framer-motion'
 
-import { useResize, useClickOutside } from '@/hooks';
+import { useResize, useClickOutside } from '@/hooks'
 
-import { Icon, Loader } from '@/components';
+import { Icon, Loader } from '@/components'
 
-import 'swiper/css';
+import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import './Galery.css'
@@ -52,12 +52,11 @@ const swiperXLAnimation = {
   }
 }
 
-
 export function Galery({ list, title = null, isLink = false }: GaleryProps) {
-  const [visible, setVisible] = useState<boolean>(false);
+  const [visible, setVisible] = useState<boolean>(false)
   const [initialSlide, setInitialSlide] = useState<number>(0)
 
-  const width = useResize();
+  const width = useResize()
 
   const modalRef = useRef(null)
   const handleCloseModal = () => {
@@ -78,17 +77,15 @@ export function Galery({ list, title = null, isLink = false }: GaleryProps) {
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
     >
-      {title &&
-        <h3 className={styles.h3}>{title}</h3>
-      }
-      {
-        width ? <Swiper
+      {title && <h3 className={styles.h3}>{title}</h3>}
+      {width ? (
+        <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={20}
           navigation
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
-          effect={"slide"}
+          effect={'slide'}
           breakpoints={{
             320: {
               slidesPerView: 1
@@ -123,12 +120,12 @@ export function Galery({ list, title = null, isLink = false }: GaleryProps) {
               </SwiperSlide>
             )
           })}
-
-        </Swiper> :
-          <div className={styles.loader}>
-            <Loader />
-          </div>
-      }
+        </Swiper>
+      ) : (
+        <div className={styles.loader}>
+          <Loader />
+        </div>
+      )}
       <motion.div
         className={styles.link__wrap}
         initial={btnAnimation.hidden}
@@ -137,11 +134,14 @@ export function Galery({ list, title = null, isLink = false }: GaleryProps) {
         transition={{ duration: 0.9 }}
         viewport={{ once: true }}
       >
-        {isLink && <Link className={styles.link} href={'/galery'}>Смотреть еще тут</Link>}
+        {isLink && (
+          <Link className={styles.link} href={'/galery'}>
+            Смотреть еще тут
+          </Link>
+        )}
       </motion.div>
       <AnimatePresence>
-
-        {visible &&
+        {visible && (
           <div className={styles.modal}>
             <motion.div
               className={styles.modal__content}
@@ -154,7 +154,8 @@ export function Galery({ list, title = null, isLink = false }: GaleryProps) {
             >
               <button
                 className={styles.modal__close}
-                onClick={handleCloseModal}>
+                onClick={handleCloseModal}
+              >
                 <Icon icon='close' />
               </button>
               <Swiper
@@ -165,10 +166,10 @@ export function Galery({ list, title = null, isLink = false }: GaleryProps) {
                 navigation
                 pagination={{ clickable: true }}
                 scrollbar={{ draggable: true }}
-                effect={"slide"}
+                effect={'slide'}
                 autoHeight={true}
               >
-                {list.map((el) => {
+                {list.map(el => {
                   return (
                     <SwiperSlide key={el}>
                       <div className={styles.sliderXLWrap}>
@@ -187,7 +188,7 @@ export function Galery({ list, title = null, isLink = false }: GaleryProps) {
               </Swiper>
             </motion.div>
           </div>
-        }
+        )}
       </AnimatePresence>
     </motion.div>
   )

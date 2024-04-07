@@ -1,4 +1,4 @@
-import IconsProps from '../Icons.props';
+import IconsProps from '../Icons.props'
 
 export function Badge(props: IconsProps) {
   return (
@@ -25,5 +25,5 @@ export function Badge(props: IconsProps) {
         fill='#0053FF'
       />
     </svg>
-  );
+  )
 }
