@@ -4,51 +4,52 @@ import nodemailer from 'nodemailer'
 
 // import sendEmail from "@/lib/mail";
 
-export async function POST(request: NextApiRequest) {
-  console.log(request.body)
-  try {
-    const { subject, message } = request.body
+export async function POST(request: NextRequest) {
+  // ! Пока просто убрал, всё равно нигде это не используется
+  // console.log(request.body)
+  // try {
+  //   const { subject, message } = request.body
 
-    const transporter = nodemailer.createTransport(
-      {
-        host: 'smtp.yandex.ru',
-        port: 465,
-        secure: true,
-        auth: {
-          user: process.env.user,
-          pass: process.env.pass
-        },
-        tls: { rejectUnauthorized: false }
-      },
-      {
-        from: 'autoservice csa <m4chapurin@yandex.ru>'
-      }
-    )
+  //   const transporter = nodemailer.createTransport(
+  //     {
+  //       host: 'smtp.yandex.ru',
+  //       port: 465,
+  //       secure: true,
+  //       auth: {
+  //         user: process.env.user,
+  //         pass: process.env.pass
+  //       },
+  //       tls: { rejectUnauthorized: false }
+  //     },
+  //     {
+  //       from: 'autoservice csa <m4chapurin@yandex.ru>'
+  //     }
+  //   )
 
-    const mailOption = {
-      from: 'm4chapurin@yandex.ru',
-      to: 'machapurin@icloud.com',
-      // to: 'm4chapurin@yandex.ru',
-      subject: 'Send Email Tutorial',
-      html: `
-		<h3>Hello Augustine</h3>
-		<li> title: ${subject}</li>
-		<li> message: ${message}</li> 
-		`
-    }
+  //   const mailOption = {
+  //     from: 'm4chapurin@yandex.ru',
+  //     to: 'machapurin@icloud.com',
+  //     // to: 'm4chapurin@yandex.ru',
+  //     subject: 'Send Email Tutorial',
+  //     html: `
+	// 	<h3>Hello Augustine</h3>
+	// 	<li> title: ${subject}</li>
+	// 	<li> message: ${message}</li> 
+	// 	`
+  //   }
 
-    transporter.sendMail(mailOption)
+  //   transporter.sendMail(mailOption)
 
-    return NextResponse.json(
-      { message: 'Email Sent Successfully' },
-      { status: 200 }
-    )
-  } catch (error) {
-    return NextResponse.json(
-      { message: 'Failed to Send Email' },
-      { status: 500 }
-    )
-  }
+  //   return NextResponse.json(
+  //     { message: 'Email Sent Successfully' },
+  //     { status: 200 }
+  //   )
+  // } catch (error) {
+  //   return NextResponse.json(
+  //     { message: 'Failed to Send Email' },
+  //     { status: 500 }
+  //   )
+  // }
 }
 
 // to: 'm4chapurin@yandex.ru',
