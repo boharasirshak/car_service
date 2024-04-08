@@ -1,6 +1,6 @@
 .ul {
   @apply grid gap-5;
-  @apply grid-cols-[repeat(auto-fit,minmax(335px,_1fr))];
+  @apply grid-cols-[repeat(auto-fit,minmax(400px,_1fr))];
 }
 
 .ul.short {
@@ -17,6 +17,7 @@
   @apply overflow-hidden;
   @apply shadow-[0px_0px_15px_0px_rgba(15,1,247,0.5)];
   @apply transition-shadow;
+  @apply w-full;
 }
 
 
